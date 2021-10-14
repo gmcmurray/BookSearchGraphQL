@@ -9,7 +9,8 @@
 4. [License](#lic)
 5. [Contributing](#contri)
 6. [Tests](#test)
-7. [Questions](#quest)
+7. [MockUp](#mockup)
+8. [Questions](#quest)
 
 ---------------------------------------
 ## 1. Description <a id="descrip"> </a>
@@ -28,8 +29,11 @@ To use code from the project, fork repo, at top level of file structure 'npm i' 
 
 Files used in API found - GitHub :
 https://github.com/gmcmurray/BookSearchGraphQL
+
 API deployed here - 
-Heroku : https://booksearchgraphql.herokuapp.com/
+Heroku : 
+
+https://booksearchgraphql.herokuapp.com/
 
 -------------------------------------------------
 
@@ -73,8 +77,15 @@ The following tests were conducted on the API:
 Tools used to develop application Insomnia to execute RESTful queries on the original API, GraphQL Playground and Robo3T validate the refactored code. 
 
 ----------------------------------------------------------------
+## 7. Mock Up <a id="mockup"></a>
 
-## 7.  Questions <a id="quest"></a>
+Screen Shot from Heroku deployment:
+
+![](./booksearch.png)
+
+
+--------------------------------
+## 8.  Questions <a id="quest"></a>
 For any questions you can email me at:
 gmcmurray1493@gmail.com
 
