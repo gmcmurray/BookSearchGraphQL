@@ -1,0 +1,30 @@
+[
+    {
+      "username": "Brian Kernighan",
+      "email": "bk@gmail.dev",
+      "password": "password01",
+      "bookCount": 1,
+      "savedBooks": [{
+        "title":"Hitme Again",
+        "authors":["Jules Verne"],
+        "description":"you don't want to know",
+        "image":"http://books.google.com/books/b123",
+        "bookId": "asdfithe23",
+        "link": null
+      }]
+    },
+
+    {
+      "username": "gman",
+      "email": "gman@gmail.com",
+      "password": "password123",
+      "bookCount": 3,
+      "savedBooks": []
+    },
+    {
+      "name": "Amiko",
+      "email": "amiko@techfriends.dev",
+      "password": "password03",
+      "skills": ["NodeJS", "MySQL", "MongoDB", "React", "CSS-in-JS"]
+    }
+]

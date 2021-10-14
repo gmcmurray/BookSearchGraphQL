@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+// import { Redirect, useParams } from 'react-router-dom';
+// import { useQuery } from '@apollo/client';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+
+import { useMutation} from '@apollo/react-hooks';
+import { ADD_BOOK } from '../utils/mutations'
+// import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -13,7 +18,7 @@ const SearchBooks = () => {
 
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
+  const [addBook, { error }]=useMutation(ADD_BOOK);
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
@@ -23,20 +28,20 @@ const SearchBooks = () => {
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("searchInput", searchInput)
     if (!searchInput) {
       return false;
     }
 
     try {
-      const response = await searchGoogleBooks(searchInput);
+      const resp = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`);
+      console.log("response",resp)
 
-      if (!response.ok) {
+      if (!resp.ok) {
         throw new Error('something went wrong!');
       }
-
-      const { items } = await response.json();
-
+      const { items } = await resp.json();
+      console.log("items",items)
       const bookData = items.map((book) => ({
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
@@ -45,9 +50,11 @@ const SearchBooks = () => {
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
 
+      console.log("bbookdata", bookData)
       setSearchedBooks(bookData);
       setSearchInput('');
-    } catch (err) {
+    } 
+    catch (err) {
       console.error(err);
     }
   };
@@ -56,18 +63,18 @@ const SearchBooks = () => {
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-
+    console.log("booktosave",bookToSave)
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+     console.log("token1",token)
     if (!token) {
       return false;
     }
 
     try {
-      const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
+      const response = await addBook({variables: {...bookToSave}});
+      console.log("response",response)
+      if (!response) {
         throw new Error('something went wrong!');
       }
 
