@@ -26,14 +26,15 @@ Deployed on Heroku (see link below).  New users sign up and then login. Use navi
 
 To use code from the project, fork repo, at top level of file structure 'npm i' to load all libraries in both client and server.  Then type in terminal at top level - npm run develop to get localhost:3000 deployment.  Graphql Playground is available on port localhost:3001.
 
-Files used in API found : github, Heroku 
-
-API deployed here : Heroku
+Files used in API found - GitHub :
+https://github.com/gmcmurray/BookSearchGraphQL
+API deployed here - 
+Heroku : https://booksearchgraphql.herokuapp.com/
 
 -------------------------------------------------
 
 ## 3. Usage <a id="usage"></a>
-The API is target to be used to search and save books on internet. After logging in, type in title of book and top 10 book returns will be presented. Save the books you want and view these in your profile page saved books.   You can remove these with a delete button.  These are saved in a database so you can view these at a later time.
+The API is targeted to be used to search and save books on internet. After signingup and logging in , type in title of book, submit and top 10 book returns will be presented. Save any books you would like by clicking on save button in book card. Saved books can be found by navigating over to saved books with a click on "See Your Books" in Nav bar.   You can remove any of these with a delete button.  Your book selection is saved in a database so next time you login you can view these.
 
 -----------------------------------------------------
 
